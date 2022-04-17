@@ -21,16 +21,6 @@ def crop_recommend():
 
 
 
-
-
-
-
-
-
-
-
-
-
 # Post Data Requests
 
 @app.route('/crop-predict', methods=["POST"])
