@@ -100,6 +100,7 @@
         window.scrollTo(0, 1);
       }
     </script>
+
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -170,16 +171,13 @@
   </head>
   <body>
     <nav
-      class="navbar navbar-expand-lg navbar-dark bg-dark static-top"
+      class="navbar navbar-expand-lg static-top"
       style="background-color: #1c00ff00"
+      id="myHeader"
     >
       <div class="container">
         <a class="navbar-brand" href="{{ url_for('home') }}">
-          <img
-            src="{{ url_for('static', filename='images/logo.jpg') }}"
-            style="width: 90px; height: 55px"
-            alt=""
-          />
+          <h2 class="text-white">Crop Help</h2>
         </a>
         <button
           class="navbar-toggler"
@@ -194,28 +192,20 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
+            <li class="nav-item" id="nav-home">
               <a class="nav-link" href="{{ url_for('home') }}"
                 >Home
-                <span class="sr-only">(current)</span>
+                <!-- <span class="sr-only">(current)</span> -->
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#"
+            <li class="nav-item" id="nav-crop">
+              <a class="nav-link" href="{{ url_for('crop_recommend') }}"
                 >Crop</a
               >
             </li>
-            <li class="nav-item">
-              <a
-                class="nav-link"
-                href="#"
-                >Fertilizer</a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#"
-                >Disease</a
-              >
+
+            <li class="nav-item" id="nav-disease">
+              <a class="nav-link" href="#">Disease</a>
             </li>
           </ul>
         </div>
@@ -223,38 +213,49 @@
     </nav>
     {% block body %} {% endblock %}
     <!-- footer -->
-	<footer class="text-center py-5">
-		<div class="container py-md-3">
-			<!-- logo -->
-			<h2 class="logo2 text-center">
-				<a href="{{ url_for('home') }}">
-					Harvestify
-				</a>
-			</h2>
-			<!-- //logo -->
-			<!-- address -->
-			<div class="contact-left-footer mt-4">
+    <footer class="text-center py-5" style="margin-top: 3em">
+      <div class="container py-md-3">
+        <!-- logo -->
+        <h2 class="logo2 text-center">
+          <a href="{{ url_for('home') }}"> Crop Help </a>
+        </h2>
+        <!-- //logo -->
+        <!-- address -->
+        <div class="contact-left-footer mt-4">
+          <!-- <a href="community.html">Community</a> -->
+        </div>
+        <div class="w3l-copy text-center">
+          <p class="text-da">An Environmental Intelligence Startup<br /></p>
+        </div>
+        <p class="homelogo"></p>
+        <p>Made with ❤️ by Atharva</p>
+        <p>&copy; Copyright 2021 Atharva Ingle</p>
+      </div>
+    </footer>
+    <!-- //footer -->
 
+    <!-- move top icon -->
+    <a href="#home" class="move-top text-center"></a>
+    <!-- //move top icon -->
+    <script>
+      window.onscroll = function () {
+        fixHeader();
+      };
 
+      // Get the header
+      var header = document.getElementById("myHeader");
 
+      // Get the offset position of the navbar
+      var sticky = header.offsetTop;
 
-
-				<!-- <a href="community.html">Community</a> -->
-				</p>
-			</div>
-			<div class="w3l-copy text-center">
-				<p class="text-da">An Environmental Intelligence Startup<br> </p>
-			</div>
-			<p class="homelogo">
-			<p>Made with ❤️ by Atharva</p>
-			<p>&copy; Copyright 2021 Atharva Ingle</p>
-			
-		</div>
-	</footer>
-	<!-- //footer -->
-
-	<!-- move top icon -->
-	<a href="#home" class="move-top text-center"></a>
-	<!-- //move top icon -->
+      // Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
+      function fixHeader() {
+        if (window.pageYOffset > sticky) {
+          header.classList.add("sticky");
+        } else {
+          header.classList.remove("sticky");
+        }
+      }
+    </script>
   </body>
 </html>

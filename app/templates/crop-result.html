@@ -1,0 +1,20 @@
+{% extends 'base.html' %} {% block body %}
+<style>
+  .mt-0 {
+    margin-top: 50 !important;
+  }
+</style>
+
+<div style="margin: 12rem" class="container py-2 mx-auto my-50 h-10">
+  <div class="row">
+    <div class="col-sm py-2 py-md-3">
+      <div class="card card-body" style="justify-content: center">
+        <h1 class="text-center">
+          It is recomended to grow <i>{{predictedCrop}}</i>
+        </h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock%}

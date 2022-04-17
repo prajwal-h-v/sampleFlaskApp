@@ -1,0 +1,130 @@
+{% extends 'base.html' %} {% block body %}
+
+<style>
+  /* .card {
+    width: 50wv;
+    height: 50vh;
+    margin: 0 auto;
+    color: #000;
+    border-radius: 3em;
+    padding: 10px 10px;
+  } */
+  .card-form {
+    margin: 0 auto;
+    width: 35vw;
+    padding: 5% 2%;
+    overflow: auto;
+    border-radius: 50px;
+    background: linear-gradient(145deg, #71a790, #87c6ab);
+    box-shadow: 22px 22px 37px #71a790, -22px -22px 37px #8bccb0;
+    border-radius: 1em;
+  }
+  .container-card {
+    margin-top: 0;
+    top: 0;
+  }
+  @media (max-width: 700px) {
+    .card-form {
+      width: 90vw;
+    }
+  }
+</style>
+
+<div class="container-card">
+  <h2 style="text-align: center; margin: 3em 1rem; color: #000">
+    <strong>Find out the most suitable crop to grow in your farm</strong>
+  </h2>
+
+  <div class="card card-form">
+    <form method="POST" action="{{url_for('cropRecommendPrediction')}}">
+      <div class="form-group">
+        <label for="nitrogen">Nitrogen</label>
+        <input
+          type="number"
+          class="form-control"
+          id="nitrogen"
+          name="nitrogen"
+          placeholder="Enter the value"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="phosphorous">Phosphorous</label>
+        <input
+          type="number"
+          class="form-control"
+          id="phosphorous"
+          name="phosphorous"
+          placeholder="Enter the value"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="pottasium">Pottasium</label>
+        <input
+          type="number"
+          class="form-control"
+          id="potasium"
+          name="potasium"
+          placeholder="Enter the value"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="ph">Ph</label>
+        <input
+          type="number"
+          class="form-control"
+          step="0.01"
+          id="ph"
+          name="ph"
+          placeholder="Enter the value"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="Rainfall">Rainfall</label>
+        <input
+          type="number"
+          step="0.01"
+          class="form-control"
+          id="rainfall"
+          name="rainfall"
+          placeholder="Enter the value"
+          required
+        />
+        <div class="form-group">
+          <label for="State">State</label>
+          <select
+            name="stt"
+            id="sts"
+            class="form-control"
+            required
+            onchange="print_city('state',this.selectedIndex);"
+          ></select>
+          <label for="City">City</label>
+          <select name="city" class="form-control" id="state" required></select>
+          <script>
+            print_state("sts");
+          </script>
+        </div>
+        <div class="d-flex justify-content-center">
+          <button type="submit" class="btn btn-info">Predict</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<script>
+  window.onload = function () {
+    var nav_home = document.getElementById("nav-home");
+    var nav_disease = document.getElementById("nav-disease");
+    var nav_crop = document.getElementById("nav-crop");
+
+    nav_home.classList.remove("active");
+    nav_disease.classList.remove("active");
+    nav_crop.classList.add("active");
+  };
+</script>
+
+{%endblock%}
