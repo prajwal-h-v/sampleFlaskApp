@@ -1,0 +1,205 @@
+:root {
+  --colorPrimary: #73a5a5;
+  --green-gradient: linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.7010154403558299) 0%,
+    rgba(70, 186, 38, 1) 50%,
+    rgba(255, 255, 255, 0.7010154403558299) 100%
+  );
+  --gradient-transparent: linear-gradient(180deg, #a9c9ffcc 0%, #ffbbeccc 100%);
+
+  --primaryBG: #c1d7d7;
+  --primary-dark: #3c5d5d;
+  --primaryGold: #a5a573;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--primaryBG);
+  scroll-behavior: smooth;
+}
+*::selection {
+  color: tomato;
+  background-color: #00000000;
+}
+
+/* Header */
+.navbar {
+  position: relative;
+  top: 0;
+  width: 100%;
+  background: var(--primaryBG);
+
+  z-index: 1;
+  transition: 0.5s;
+}
+.nav-link,
+.nav-brand {
+  color: #333;
+  cursor: pointer;
+}
+.nav-link {
+  margin: 0 0.5em !important;
+  transition: all 0.5s;
+}
+.nav-link:hover {
+  color: #070;
+}
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+.nav-item {
+  transition: 0.5s all;
+  background: var(--primaryBG);
+  margin: 0 0.75em;
+  border-radius: 50px;
+}
+.nav-item:hover {
+  box-shadow: 8px 8px 17px #bebebe, -8px -8px 17px #ffffff;
+}
+.active {
+  border-radius: 50px;
+
+  box-shadow: 8px 8px 17px #bebebe, -8px -8px 17px #ffffff;
+}
+.navbar-collapse {
+  justify-content: flex-end;
+}
+
+/* Banner */
+
+.header {
+  background-image: url(../my_images/agriculture-bg.jpg);
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+.overlay {
+  position: absolute;
+  min-height: 100%;
+  min-width: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.description {
+  left: 50%;
+  position: absolute;
+
+  top: 45%;
+  transform: translate(-50%, -55%);
+  text-align: center;
+}
+.description h1 {
+  color: var(--colorPrimary);
+  letter-spacing: 0.2em;
+}
+.description p {
+  color: var(--primaryGold);
+  font-size: 1.5em;
+  line-height: 1.5;
+}
+
+/* Features */
+.features {
+  margin: 4em auto;
+  padding: 1em;
+  position: relative;
+}
+.feature-title {
+  color: var(--primary-dark);
+  font-size: 1.3em;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.neo-card {
+  width: auto;
+  height: 20vh;
+  margin: 1em 0;
+  border-radius: 50px;
+  cursor: pointer;
+
+  transition: 0.5s;
+  padding: 1em;
+}
+.neo-card p {
+  color: var(--primary-dark);
+}
+.neo-card:hover {
+  box-shadow: 8px 8px 17px #bebebe, -8px -8px 17px #ffffff;
+}
+
+input {
+  transition: 0.5s all;
+}
+@media (max-width: 768px) {
+  .nav-item {
+    transition: 0.5s all;
+    background: var(--primaryBG);
+    margin: 12px 0.75em;
+  }
+  .active {
+    border-radius: 0;
+    box-shadow: 0 0 0 0;
+  }
+  .nav-item:hover {
+    border-radius: 1em;
+  }
+
+  .card {
+    width: 80vw;
+    margin: 0;
+  }
+}
+@media (min-width: 768px) {
+  .container {
+    max-width: 50vw;
+  }
+}
+
+/* Crop Recommendation Page */
+.card {
+  /* background: linear-gradient(270deg, #9ebd13 0%, #008552 100%); */
+
+  background: #669999;
+  margin: 3em 1em;
+  color: #fdfdfd;
+}
+.container {
+  align-items: center;
+  justify-content: center;
+}
+.form-group {
+  margin: 1.5em 0;
+  text-align: left;
+}
+.card-header {
+  /* background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%); */
+  background: #3d5c5c;
+}
+.card-footer {
+  /* background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%); */
+  background: #3d5c5c;
+}
+.form-control {
+  background: #d1e0e0;
+  color: #486a6a;
+}
+.form-control:focus {
+  background: #486a6a;
+  color: #d1e0e0;
+}
+a {
+  text-decoration: none;
+  color: var(--primary-dark);
+}
+a:hover {
+  color: var(--primary-dark);
+}

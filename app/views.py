@@ -31,14 +31,14 @@ def crop_recommend():
 
 
 
-
+# Post Data Requests
 
 @app.route('/crop-predict', methods=["POST"])
 def cropRecommendPrediction():
     if request.method == 'POST':
         N = int(request.form['nitrogen'])
         P = int(request.form['phosphorous'])
-        K = int(request.form['potasium'])
+        K = int(request.form['pottasium'])
         ph = float(request.form['ph'])
         rainfall = float(request.form['rainfall'])
         # state = request.form.get("stt")
