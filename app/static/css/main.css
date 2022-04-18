@@ -119,9 +119,7 @@ body {
   left: 0;
   background: #c1d7d744;
 } */
-.row {
-  width: 100vw;
-}
+
 .description {
   margin-top: 5vh;
   text-align: center;
@@ -138,11 +136,10 @@ body {
 
 /* Features */
 .features {
-  margin-top: 2em;
   padding: 1em;
 }
 .features h1 {
-  margin: 1em;
+  margin-top: 1em;
   color: var(--blueDark);
 }
 .feature-title {
