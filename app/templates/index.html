@@ -3,43 +3,49 @@
 {% block body %}
 
 <header class="page-header header container-fluid">
-  <div class="overlay">
+  <div class="row">
     <div class="description">
       <h1>Crop Help</h1>
       <p>Get advice and recommendations on crops</p>
-      <button class="btn btn-outline-light btn-lg">Get Help</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="features" id="features">
+      <h1 class="text-center">Our Services</h1>
+      <div class="container-flex">
+        <div class="item-flex">
+          <a href="{{url_for('crop_recommend')}}">
+            <div class="neo-card">
+              <h3 class="feature-title">Crop Recommendation</h3>
+              <p>
+                Get recommendations of suitable crop for your region and climate
+              </p>
+            </div>
+          </a>
+        </div>
+
+        <div class="item-flex">
+          <a href="{{url_for('crop_recommend')}}">
+            <div class="neo-card">
+              <h3 class="feature-title">Crop Disease Detection</h3>
+
+              <p>Detect disease the crop is suffering from</p>
+            </div>
+          </a>
+        </div>
+        <div class="item-flex">
+          <a href="{{url_for('crop_recommend')}}">
+            <div class="neo-card">
+              <h3 class="feature-title">Crop Information</h3>
+
+              <p>Get end to end information about cultivation of crops</p>
+            </div>
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 </header>
-<div class="features">
-  <h1 class="text-center">Our Services</h1>
-  <div class="row text-center">
-    <div class="col-lg-4 col-md-4 col-sm-12">
-      <div class="neo-card">
-        <h3 class="feature-title">
-          <a href="{{url_for('crop_recommend')}}">Crop Recommendation </a>
-        </h3>
-
-        <p>Get recommendations of suitable crop for your region and climate</p>
-      </div>
-    </div>
-
-    <div class="col-lg-4 col-md-4 col-sm-12">
-      <div class="neo-card">
-        <h3 class="feature-title">Crop Disease Detection</h3>
-
-        <p>Detect disease the crop is suffering from</p>
-      </div>
-    </div>
-    <div class="col-lg-4 col-md-4 col-sm-12">
-      <div class="neo-card">
-        <h3 class="feature-title">Crop Information</h3>
-
-        <p>Get end to end information about cultivation of crops</p>
-      </div>
-    </div>
-  </div>
-</div>
 
 <script>
   window.onload = function () {
