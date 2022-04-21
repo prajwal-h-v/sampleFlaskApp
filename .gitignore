@@ -3,3 +3,4 @@ old/
 notebooks/
 flask_session/
 models/
+app/config.py

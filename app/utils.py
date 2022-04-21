@@ -3,7 +3,7 @@ import pickle
 from flask import jsonify
 from sklearn.utils import shuffle
 
-from app import  config
+from app import weather_api_key
 from smtplib import SMTP
 import requests
 import string 
@@ -27,7 +27,7 @@ def weather_fetch(city_name):
     :params: city_name
     :return: temperature, humidity
     """
-    api_key = config.weather_api_key
+    api_key = weather_api_key
     base_url = "http://api.openweathermap.org/data/2.5/weather?"
     complete_url = base_url + "appid="+api_key+"&q="+city_name
     response = requests.get(complete_url)
@@ -56,12 +56,11 @@ def generatePassword():
 
 def sendMail(dest, message):
     
-    conn = SMTP('smtp.gmail.com',587)
 
+    conn = SMTP('smtp.gmail.com',587)
     conn.starttls()
     sender = 'prajjisharma@gmail.com'
     conn.login(sender,'prajjivk169')
-
     conn.sendmail(sender,dest,message)
 
     conn.quit()

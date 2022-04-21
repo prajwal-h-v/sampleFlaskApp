@@ -67,6 +67,7 @@ body {
 .nav-link {
   margin: 0 0.5em !important;
   transition: all 0.5s;
+  text-transform: uppercase;
 }
 .nav-link:hover {
   color: var(--lightWhite);
