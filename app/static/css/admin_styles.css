@@ -1,0 +1,103 @@
+* {
+  color: aliceblue;
+}
+*::selection {
+  background: rgb(0, 19, 99);
+  background: linear-gradient(
+    4deg,
+    rgba(0, 19, 99, 1) 20%,
+    rgba(103, 0, 0, 1) 80%
+  );
+  color: #aaa;
+}
+body {
+  height: 100vh;
+  background: rgb(0, 19, 99);
+  background: linear-gradient(
+    4deg,
+    rgba(0, 19, 99, 1) 20%,
+    rgba(103, 0, 0, 1) 80%
+  );
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.main {
+  margin-top: 10em;
+  width: 25vw;
+}
+.form-group {
+  padding: 0.5em;
+  margin-top: 0.5em;
+}
+.btn {
+  width: 100%;
+  margin-top: 0.75em;
+}
+#warning {
+  text-align: center;
+  width: 100%;
+  color: coral;
+  margin-top: 0.3em;
+  padding: 0.5em;
+}
+
+.navbar {
+  position: relative;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+  transition: 0.5s;
+}
+
+.brand-flex {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.brand-flex h3 {
+  margin-left: 1em;
+}
+.nav-link,
+.nav-brand {
+  color: var(--lightWhite);
+  cursor: pointer;
+}
+.nav-link {
+  margin: 0 0.5em !important;
+  transition: all 0.5s;
+}
+.nav-link:hover {
+  color: var(--lightWhite);
+}
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+.nav-item {
+  transition: 0.5s;
+
+  margin: 0 0.75em;
+  border-radius: 50px;
+}
+.nav-item:hover {
+  border-radius: 27px;
+
+  box-shadow: 11px 11px 11px #290000, -11px -11px 11px #a50000;
+}
+.active {
+  border-radius: 50px;
+  box-shadow: 23px 23px 46px #390000, -23px -23px 46px #950000;
+  /* box-shadow: 8px 8px 16px #424363, -8px -8px 16px #e8efff; */
+}
+.navbar-collapse {
+  justify-content: flex-end;
+}
+.greeting {
+  margin-right: 2em;
+  align-items: baseline;
+  justify-content: center;
+  text-align: center;
+}

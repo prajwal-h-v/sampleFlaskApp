@@ -1,0 +1,16 @@
+{% extends 'adminBase.html' %}
+<!--  -->
+{% block body%}
+
+<script>
+  window.onload = function () {
+    var nav_home = document.getElementById("nav-dashboard");
+    var nav_disease = document.getElementById("nav-admin");
+    var nav_crop = document.getElementById("nav-cropCenter");
+
+    nav_home.classList.add("active");
+    nav_disease.classList.remove("active");
+    nav_crop.classList.remove("active");
+  };
+</script>
+{%endblock%}

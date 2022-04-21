@@ -1,7 +1,13 @@
+import imp
 import pickle
 from flask import jsonify
+from sklearn.utils import shuffle
+from torch import le
 from app import  config
+from smtplib import SMTP
 import requests
+import string 
+import random
 
 crop_recommendation_model_path = "app/trainedModel/DecisionTree.pkl"
 crop_recommendation_model = pickle.load(
@@ -33,3 +39,29 @@ def weather_fetch(city_name):
         return temperature,humidity
     else:
         return None
+
+    
+def generatePassword():
+    length = 10
+    characters =list(string.ascii_letters+string.digits+"!@#$%^&*()")
+    random.shuffle(characters)
+
+    password = []
+    for i in range(length):
+        password.append(random.choice(characters))
+
+    random,shuffle(password)
+    newPassword = "".join(password)
+    return newPassword
+
+def sendMail(dest, message):
+    
+    conn = SMTP('smtp.gmail.com',587)
+
+    conn.starttls()
+    sender = 'prajjisharma@gmail.com'
+    conn.login(sender,'prajjivk169')
+
+    conn.sendmail(sender,dest,message)
+
+    conn.quit()
