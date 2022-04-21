@@ -9,6 +9,7 @@ import os
 
 mongo_client_uri = os.environ.get('MONGODB_URI')
 weather_api_key = os.environ.get("WEATHER_API_KEY")
+print(os.environ.items)
 
 client = pymongo.MongoClient(mongo_client_uri)
 
