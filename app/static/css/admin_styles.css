@@ -22,10 +22,7 @@ body {
   background-position: center;
   background-size: cover;
 }
-.main {
-  margin-top: 10em;
-  width: 25vw;
-}
+
 .form-group {
   padding: 0.5em;
   margin-top: 0.5em;
@@ -100,4 +97,18 @@ body {
   align-items: baseline;
   justify-content: center;
   text-align: center;
+}
+
+@media (max-width: 768px) {
+  .main {
+    margin-top: 10em;
+    width: auto;
+  }
+}
+
+@media (min-width: 1080px) {
+  .main {
+    margin-top: 10em;
+    width: 25vw;
+  }
 }
