@@ -2,7 +2,7 @@
 
 import email
 from flask import   redirect, render_template,request, url_for,session
-from matplotlib.pyplot import title
+
 
 from app import api,app,admin
 import numpy as np
