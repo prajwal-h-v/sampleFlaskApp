@@ -5,3 +5,4 @@ requests==2.27.1
 gunicorn==20.1.
 sklearn
 pickleshare
+flask_session
