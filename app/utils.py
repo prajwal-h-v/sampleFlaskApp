@@ -1,8 +1,8 @@
-import imp
+
 import pickle
 from flask import jsonify
 from sklearn.utils import shuffle
-from torch import le
+
 from app import  config
 from smtplib import SMTP
 import requests
