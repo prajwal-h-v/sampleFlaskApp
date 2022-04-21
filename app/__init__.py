@@ -6,7 +6,7 @@ from flask_restful import Api
 import pymongo
 from flask_session import Session
 
-client = pymongo.MongoClient("mongodb+srv://prajji14:prajjivk169@cluster0.p8upr.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+client = pymongo.MongoClient("mongodb+srv://<Auth>@cluster0.p8upr.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
 db = client.get_database('cropHelp')
 admin = db.admin
 
