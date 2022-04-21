@@ -4,4 +4,4 @@ notebooks/
 flask_session/
 models/
 
-config.py
+app/config.py
