@@ -1,2 +1,5 @@
-__pycache__
+__pycache__/
 old/
+notebooks/
+flask_session/
+models/
