@@ -76,21 +76,21 @@ def adminLogout():
 #############################################################
 @app.route('/diseaseDetect')
 def diseaseDetectionPage():
-    return redirect(url_for('try_again'))
+    return redirect(url_for('try_again',home="home"))
     
 #############################################################
 ###################### Crop Info Page #######################
 #############################################################
 @app.route('/cropInformation')
 def cropInformationPage():
-    return redirect(url_for('try_again'))
+    return redirect(url_for('try_again', home="home"))
 
 #############################################################
 ###################### Crop Center Page #####################
 #############################################################
 @app.route('/cropCenterPage')
 def cropCenterPage():
-    return redirect(url_for('try_again'))
+    return redirect(url_for('try_again',home = "adminDashboard"))
 
 
 #############################################################
@@ -99,7 +99,7 @@ def cropCenterPage():
 @app.route('/try_again')
 def try_again():
     title="Try Again"
-    return render_template('try_again.html',title=title)
+    return render_template('try_again.html',title=title,home=request.args.get('home'))
 
 
 ########################################################################################################

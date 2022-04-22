@@ -1,26 +1,22 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
 * {
-  color: aliceblue;
+  color: #4d4d4d;
   font-family: "Nunito", "Poppins", sans-serif;
 }
 *::selection {
   background: rgb(0, 19, 99);
   background: linear-gradient(
-    4deg,
-    rgba(0, 19, 99, 1) 20%,
-    rgba(103, 0, 0, 1) 80%
+    180deg,
+    rgba(141, 141, 141, 1) 10%,
+    rgba(255, 255, 255, 1) 89%
   );
   color: #aaa;
 }
 body {
   height: 100vh;
-  background: rgb(0, 19, 99);
-  background: linear-gradient(
-    4deg,
-    rgba(0, 19, 99, 1) 20%,
-    rgba(103, 0, 0, 1) 80%
-  );
+  background: #111;
+  /* box-shadow: 20px 20px 16px #8d8d8d, -20px -20px 16px #ffffff; */
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -83,16 +79,7 @@ body {
   margin: 0 0.75em;
   border-radius: 50px;
 }
-.nav-item:hover {
-  border-radius: 27px;
 
-  box-shadow: 11px 11px 11px #290000, -11px -11px 11px #a50000;
-}
-.active {
-  border-radius: 50px;
-  box-shadow: 23px 23px 46px #390000, -23px -23px 46px #950000;
-  /* box-shadow: 8px 8px 16px #424363, -8px -8px 16px #e8efff; */
-}
 .navbar-collapse {
   justify-content: flex-end;
 }
@@ -103,16 +90,152 @@ body {
   text-align: center;
 }
 
-@media (max-width: 768px) {
+/* ################################################## */
+/* ################### Admin Dashboard ############## */
+/* ################################################## */
+@media (min-width: 1080px) {
+  .nav-item:hover {
+    border-radius: 27px;
+
+    background: #e0e0e0;
+    box-shadow: inset 20px 20px 60px #bebebe, inset -20px -20px 60px #ffffff;
+  }
+  .active {
+    border-radius: 50px;
+    background: linear-gradient(145deg, #e8e8e8, #c3c3c3);
+    font-weight: bold;
+
+    /* box-shadow: 8px 8px 16px #424363, -8px -8px 16px #e8efff; */
+  }
   .main {
-    margin-top: 10em;
-    width: auto;
+    margin-top: 0;
+    width: 35vw;
+    padding: 2em;
+  }
+  .container {
+    height: 60vh;
+    flex-direction: row;
+  }
+  .main-content {
+    margin-top: 5em;
+    width: 75vw;
+    height: 80vh;
+    max-height: 70vh;
+    max-width: 75vw;
+    overflow: auto;
+    /* box-shadow: 20px 20px 16px #9d9d9d, -20px -20px 16px #ffffff; */
+    border-radius: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+  .img-btn-area {
+    width: 100%;
+    height: 100%;
+    display: flex;
+
+    background: linear-gradient(
+        180deg,
+        rgba(141, 141, 141, 0.8) 10%,
+        rgba(255, 255, 255, 0.8) 89%
+      ),
+      url("../my_images/wheat-bg.jpg");
+    background-position: center;
+    background-size: cover;
+    border-radius: 1em;
+    align-items: center;
+    justify-content: center;
+    transition: 0.5s;
+  }
+  .img-btn-area:hover {
+    box-shadow: 10px 10px 20px #b0b0b0, -10px -10px 20px #ffffff;
+
+    background-position: center;
+    background-size: cover;
+  }
+  .main-content a {
+    width: 25%;
+    height: 25%;
+    text-decoration: none;
+    margin: 1em;
   }
 }
 
-@media (min-width: 1080px) {
-  .main {
-    margin-top: 10em;
-    width: 25vw;
+@media (max-width: 768px) {
+  .nav-item {
+    margin: 0.5em;
   }
+  .active {
+    color: black;
+    font-weight: bolder;
+  }
+  .main {
+    width: 90vw;
+    padding: 3em 1em;
+  }
+
+  .container {
+    margin-top: 5em;
+    flex-direction: column;
+  }
+  .img-btn-area {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    padding: 1em;
+    background: linear-gradient(
+        180deg,
+        rgba(141, 141, 141, 0.8) 10%,
+        rgba(255, 255, 255, 0.8) 89%
+      ),
+      url("../my_images/wheat-bg.jpg");
+    background-position: center;
+    background-size: cover;
+    border-radius: 1em;
+    align-items: center;
+    justify-content: center;
+    transition: 0.5s;
+  }
+  .main-content a {
+    width: 80vw;
+    height: 10vh;
+    text-decoration: none;
+    margin: 1em;
+  }
+}
+.btn-text {
+  text-align: center;
+  font-size: large;
+  font-weight: bold;
+  letter-spacing: 0.2em;
+}
+
+.container {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+}
+.main h1 {
+  text-align: center;
+  color: #ccc;
+}
+.main {
+  border-radius: 39px;
+  background: linear-gradient(145deg, #111, #333);
+  box-shadow: 2px 2px 32px #0094ff, -2px -2px 32px #0094ff;
+  border: #0094ff 7px solid;
+
+  color: #4d4d4d;
+}
+.main label {
+  color: #ccc;
+  margin-bottom: 0.3em;
+}
+#addAdminMain {
+  background: linear-gradient(145deg, #111, #333);
+  border-radius: 39px;
+  box-shadow: 2px 2px 32px #004623, -2px -2px 32px #00ba5d;
+  border: #008040 7px solid;
 }

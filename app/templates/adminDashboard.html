@@ -1,6 +1,18 @@
 {% extends 'adminBase.html' %}
 <!--  -->
 {% block body%}
+<div class="container main-content">
+  <a href=" {{url_for('cropCenterPage')}} ">
+    <div class="img-btn-area">
+      <p class="btn-text">Add Crop Information</p>
+    </div>
+  </a>
+  <a href=" {{url_for('addAdminPage')}} ">
+    <div class="img-btn-area">
+      <p class="btn-text">Add Admin</p>
+    </div>
+  </a>
+</div>
 
 <script>
   window.onload = function () {

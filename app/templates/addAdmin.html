@@ -1,23 +1,25 @@
 {% extends 'adminBase.html' %} {%block body %}
-<div class="container main">
-  <form method="POST" action="{{url_for('addAdmin')}} " id="addAdmin">
-    <div class="form-group">
-      <label for="fullName">Full Name</label>
-      <input type="text" name="fullName" id="fullName" class="form-control" />
-    </div>
-    <div class="form-group">
-      <label for="username">Useraname</label>
-      <input type="text" name="username" id="username" class="form-control" />
-    </div>
-    <div class="form-group">
-      <label for="emailid">Email ID</label>
-      <input type="email" name="emailid" id="emailid" class="form-control" />
-    </div>
-    <button class="btn btn-success">Add Admin</button>
-  </form>
-  {% if warning %}
-  <h2>{{warning}}</h2>
-  {%endif%}
+<div class="container">
+  <div class="main" id="addAdminMain">
+    <form method="POST" action="{{url_for('addAdmin')}} " id="addAdmin">
+      <div class="form-group">
+        <label for="fullName">Full Name</label>
+        <input type="text" name="fullName" id="fullName" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label for="username">Useraname</label>
+        <input type="text" name="username" id="username" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label for="emailid">Email ID</label>
+        <input type="email" name="emailid" id="emailid" class="form-control" />
+      </div>
+      <button class="btn btn-success">Add Admin</button>
+    </form>
+    {% if warning %}
+    <h2>{{warning}}</h2>
+    {%endif%}
+  </div>
 </div>
 <script>
   window.onload = function () {
