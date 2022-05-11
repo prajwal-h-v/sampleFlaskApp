@@ -1,0 +1,22 @@
+{% extends 'adminBase.html' %} {%block body%}
+
+<div class="container mx-auto main-content">
+  <a href="{{url_for('addCropPage')}}">
+    <div class="img-btn-area"><p class="img-btn-text">Add New Crop</p></div>
+  </a>
+  <a href="{{url_for('addDiseasePage')}}">
+    <div class="img-btn-area"><p class="img-btn-text">Add Crop Disease</p></div>
+  </a>
+</div>
+<script>
+  window.onload = function () {
+    var nav_home = document.getElementById("nav-dashboard");
+    var nav_disease = document.getElementById("nav-admin");
+    var nav_crop = document.getElementById("nav-cropCenter");
+
+    nav_home.classList.remove("active");
+    nav_disease.classList.remove("active");
+    nav_crop.classList.add("active");
+  };
+</script>
+{%endblock%}

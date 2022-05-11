@@ -1,13 +1,13 @@
 
 
 
-from flask import   redirect, render_template,request, url_for,session
+from flask import redirect, render_template,request, url_for,session, Markup
+from app.utilities.diseases import disease_dic
 
-
-from app import api,app,admin
+from app import api,app,admin, crop_db
 import numpy as np
 from app.models import CropRecommendation, Hello, Square
-from app.utils import cropPrediction,weather_fetch, generatePassword,sendMail
+from app.utils import cropPrediction, predict_image,weather_fetch, generatePassword,sendMail
 
 
 api.add_resource(Hello,"/api/")
@@ -76,7 +76,8 @@ def adminLogout():
 #############################################################
 @app.route('/diseaseDetect')
 def diseaseDetectionPage():
-    return redirect(url_for('try_again',home="home"))
+    title = "Disease Detection"
+    return render_template('diseaseDetectPage.html', title=title)
     
 #############################################################
 ###################### Crop Info Page #######################
@@ -90,7 +91,11 @@ def cropInformationPage():
 #############################################################
 @app.route('/cropCenterPage')
 def cropCenterPage():
-    return redirect(url_for('try_again',home = "adminDashboard"))
+    if session.get('name'):
+        title = "Add Crop Info"
+        return render_template('addCropData.html',title=title,name=session.get('name'),email = session.get('email'))
+    else:
+        return redirect(url_for('adminLoginPage'))
 
 
 #############################################################
@@ -100,6 +105,19 @@ def cropCenterPage():
 def try_again():
     title="Try Again"
     return render_template('try_again.html',title=title,home=request.args.get('home'))
+
+@app.route('/addCropPage')
+def addCropPage():
+
+    if session.get('name'):
+        title = "Add New Crop Info"
+        return render_template('NewCropPage.html',title=title,name=session.get('name'),email = session.get('email'))
+    else:
+        return redirect(url_for('adminLoginPage'))
+
+@app.route('/addDiseasePage')
+def addDiseasePage():
+    return redirect(url_for('try_again',home="adminDashboard"))
 
 
 ########################################################################################################
@@ -204,3 +222,56 @@ def adminLogin():
             return render_template('adminLogin.html',warning=msg)
         return redirect(url_for('adminDashboard'))
     
+#############################################################
+###################### diseasePrediction ####################
+#############################################################
+@app.route('/diseasePrediction', methods=['POST'])
+def diseasePrediction():
+    title = "Disease Result"
+    if 'file' not in request.files:
+        return redirect(request.url)
+    file = request.files.get('file')
+    if not file:
+        return redirect(url_for('diseaseDetectionPage'))
+   
+    img = file.read()
+         
+    prediction = predict_image(img)
+
+    prediction = Markup(str(disease_dic[prediction]))
+    return render_template('disease_result.html',prediction=prediction, title = title)
+  
+
+@app.route('/addNewCrop', methods=['POST'])
+def addNewCrop():
+    if session.get('name'):
+        cropName = request.form['cropName']
+        description = request.form['description']
+        usage = request.form['usage']
+        propagation = request.form['propagation']
+
+        queryObject = {
+            "name":cropName,
+            "description" : description,
+            'usage':usage,
+            'propagation':propagation
+
+        }
+        # Checking if crop already exists
+        if crop_db.count_documents({'name':cropName}) > 0:
+            warning = "Crop already exists."
+            return render_template(
+                'NewCropPage.html',
+                warning=warning,
+                name=session.get('name'),
+                email = session.get('email'))
+        query = crop_db.insert_one(queryObject)
+        if query.acknowledged:
+            return render_template(
+                'NewCropPage.html',
+                success = "Crop Added",
+                name=session.get('name'),
+                email = session.get('email'))
+
+    else:
+        return redirect(url_for('adminLoginPage'))

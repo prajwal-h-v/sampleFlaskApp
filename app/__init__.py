@@ -1,30 +1,34 @@
 
 
 
-# from app import config
+from app import config
 from flask import Flask
 from flask_restful import Api
 import pymongo
 from flask_session import Session
 import os
 
-mongo_client_uri = os.environ.get('MONGODB_URI')
-weather_api_key = os.environ.get("WEATHER_API_KEY")
 
-# print(mongo_client_uri, weather_api_key)
-# # if mongo_client_uri == None:
-# #     mongo_client_uri = config.MONGODB_URI
+if "MONGODB_URI" in os.environ:
+    mongo_client_uri = os.environ.get('MONGODB_URI')
+else:
+    mongo_client_uri = config.MONGODB_URI
 
-# # if weather_api_key == None:
-# #     weather_api_key = config.weather_api_key
 
-# print(mongo_client_uri, weather_api_key)
+if "WEATHER_API_KEY" in os.environ:
+    weather_api_key = os.environ.get("WEATHER_API_KEY")
+else:
+    weather_api_key = config.weather_api_key
+
+if weather_api_key is not None and mongo_client_uri is not None:
+    print("Api loaded ...\n")
 
 
 client = pymongo.MongoClient(mongo_client_uri)
 
 db = client.get_database('cropHelp')
 admin = db.admin
+crop_db = db.crop_data
 
 
 

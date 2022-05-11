@@ -135,11 +135,10 @@ body {
     height: 100%;
     display: flex;
     background: linear-gradient(
-        150deg,
-        rgba(49, 129, 89, 0.25) 15%,
-        rgba(35, 92, 64, 0.25) 85%
-      ),
-      url("../my_images/tree-bg.jpg");
+      150deg,
+      rgba(49, 129, 89, 0.25) 15%,
+      rgba(35, 92, 64, 0.25) 85%
+    );
     background-position: center;
     background-size: cover;
     border-radius: 1em;
@@ -148,7 +147,8 @@ body {
     transition: 0.5s;
   }
   .img-btn-area:hover {
-    box-shadow: 12px 12px 10px #0d0d0d, -12px -12px 10px #353535;
+    box-shadow: 20px 20px 32px #0e261a, -20px -20px 32px #22583e;
+
     background-position: center;
     background-size: cover;
   }
@@ -235,4 +235,25 @@ body {
 .main label {
   color: #ccc;
   margin-bottom: 0.3em;
+}
+
+.container-crop {
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+}
+.warning {
+  width: 100%;
+  margin: 0.25em;
+  padding: 0.25em;
+  background-color: #ff6600;
+  color: whitesmoke;
+}
+.success {
+  width: 100%;
+  margin: 0.25em;
+  padding: 0.25em;
+  background-color: #66cc66;
+  color: whitesmoke;
 }

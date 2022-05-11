@@ -1,0 +1,70 @@
+{% extends 'adminBase.html' %} {%block body %}
+
+<div class="main mx-auto" style="margin-top: 1em">
+  <form action=" {{url_for('addNewCrop')}} " method="post">
+    <div class="text-center">
+      <h2>New Crop</h2>
+      {% if warning %}
+      <div class="warning">{{warning}}</div>
+      {%endif%} {% if success %}
+      <div class="success">{{success}}</div>
+      {%endif%}
+    </div>
+    <div class="">
+      <div class="form-group">
+        <label for="cropName">Crop Name</label>
+        <input
+          type="text"
+          name="cropName"
+          class="form-control"
+          id="cropName"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea
+          class="form-control"
+          cols="4"
+          rows="4"
+          name="description"
+          id="description"
+        ></textarea>
+      </div>
+      <div class="form-group">
+        <label for="usage">Crop Usage</label>
+        <textarea
+          class="form-control"
+          cols="4"
+          rows="4"
+          name="usage"
+          id="usage"
+        ></textarea>
+      </div>
+      <div class="form-group">
+        <label for="propagation">Crop Suitable Conditions</label>
+        <textarea
+          class="form-control"
+          cols="4"
+          rows="4"
+          name="propagation"
+          id="propagation"
+        ></textarea>
+      </div>
+      <button type="submit" class="btn btn-success">Add</button>
+    </div>
+  </form>
+</div>
+
+<script>
+  window.onload = function () {
+    var nav_home = document.getElementById("nav-dashboard");
+    var nav_disease = document.getElementById("nav-admin");
+    var nav_crop = document.getElementById("nav-cropCenter");
+
+    nav_home.classList.remove("active");
+    nav_disease.classList.remove("active");
+    nav_crop.classList.add("active");
+  };
+</script>
+{%endblock%}
