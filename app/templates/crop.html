@@ -15,10 +15,12 @@
           <label for="nitrogen">Nitrogen</label>
           <input
             type="number"
+            min="15"
+            max=" 120"
             class="form-control"
             name="nitrogen"
             id="nitrogen"
-            placeholder="Enter Nitrogen Value"
+            placeholder="Enter Nitrogen Value [Min:15, Max:120]"
             required
           />
         </div>
@@ -27,9 +29,11 @@
           <input
             type="number"
             class="form-control"
+            min="10"
+            max=" 125"
             name="phosphorous"
             id="phosphorous"
-            placeholder="Enter Phosphorous Value"
+            placeholder="Enter Phosphorous Value [Min:10, Max:125]"
             required
           />
         </div>
@@ -38,9 +42,11 @@
           <input
             type="number"
             class="form-control"
+            min="10"
+            max=" 200"
             name="pottasium"
             id="pottasium"
-            placeholder="Enter Pottasium Value"
+            placeholder="Enter Pottasium Value [Min:10, Max:200]"
             required
           />
         </div>
@@ -49,10 +55,12 @@
           <input
             type="number"
             step="0.01"
+            min="3.5"
+            max="8.5"
             class="form-control"
             name="ph"
             id="ph"
-            placeholder="Enter PH Level"
+            placeholder="Enter PH Level [Min: 3.5, Max: 8.5]"
             required
           />
         </div>
@@ -61,10 +69,12 @@
           <input
             type="number"
             step="0.01"
+            min="20"
+            max="300"
             class="form-control"
             name="rainfall"
             id="rainfall"
-            placeholder="Enter Rainfall Level(mm)"
+            placeholder="Enter Rainfall Level(mm) [Min: 20, Max:300]"
             required
           />
         </div>

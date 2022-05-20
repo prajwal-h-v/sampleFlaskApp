@@ -57,14 +57,17 @@ body {
 .nav-item {
   transition: 0.5s all;
   margin: 0 0.75em;
-  border-radius: 50px;
 }
 .nav-item:hover {
-  border-radius: 27px;
+  border-radius: 8px;
+  background: linear-gradient(145deg, #fdffff, #d4dfda);
+  box-shadow: 7px 7px 11px #a0a9a5, -7px -7px 11px #ffffff;
 }
 .active {
-  border-radius: 50px;
   font-weight: bolder;
+  border-radius: 8px;
+  background: #ecf8f2;
+  box-shadow: 7px 7px 11px #a0a9a5, -7px -7px 11px #ffffff;
 }
 .navbar-collapse {
   justify-content: flex-end;
