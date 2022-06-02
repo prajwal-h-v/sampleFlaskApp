@@ -1,0 +1,40 @@
+{% extends 'base.html'%} {%block body%}
+<link rel="stylesheet" href="../static/css/featureStyles.css" />
+<div class="container-fluid text-center">
+  <h2 class="text-light">Here are the list of crops available</h2>
+  <hr />
+  <div id="cropListContainer">
+    {% for crop in crops %}
+
+    <a href=" getCropById/{{crop[0]}} " class="crop-card">
+      <div class="grid-item">
+        <div class="card">
+          <img
+            src="../static/my_images/logos/logo1.jpg"
+            alt=""
+            class="card-img-top"
+          />
+          <div class="card-body">
+            <h2 class="card-title">{{crop[1]}}</h5>
+            <p class="card-text">Get info about {{crop[1]}}</p>
+          </div>
+        </div>
+      </div>
+    </a>
+    {%endfor%}
+  </div>
+</div>
+<script>
+  window.onload = function () {
+    var nav_home = document.getElementById("nav-home");
+    var nav_disease = document.getElementById("nav-disease");
+    var nav_crop = document.getElementById("nav-crop");
+    var nav_crop_info = document.getElementById("nav-crop-center");
+
+    nav_home.classList.remove("active");
+    nav_disease.classList.remove("active");
+    nav_crop.classList.remove("active");
+    nav_crop_info.classList.add("active");
+  };
+</script>
+{%endblock%}

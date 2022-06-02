@@ -1,50 +1,95 @@
 {% extends 'base.html' %}
 <!-- Content begin -->
 {% block body %}
-
-<header class="page-header header container-fluid">
+<link rel="stylesheet" href="../static/css/featureStyles.css" />
+<header class="page-header header container-fluid banner">
   <div class="row">
     <div class="description">
       <h1>Crop Help</h1>
       <p>Get advice and recommendations on crops</p>
-    </div>
-  </div>
-  <div class="row">
-    <div class="features" id="features">
-      <h1 class="text-center">Our Services</h1>
-      <div class="container-flex">
-        <div class="item-flex">
-          <a href="{{url_for('crop_recommend')}}">
-            <div class="neo-card">
-              <h3 class="feature-title">Crop Recommendation</h3>
-              <p>
-                Get recommendations of suitable crop for your region and climate
-              </p>
-            </div>
-          </a>
-        </div>
-
-        <div class="item-flex">
-          <a href="{{url_for('diseaseDetectionPage')}}">
-            <div class="neo-card">
-              <h3 class="feature-title">Crop Disease Detection</h3>
-              <p>Detect disease the crop is suffering from</p>
-            </div>
-          </a>
-        </div>
-        <div class="item-flex">
-          <a href="{{url_for('cropInformationPage')}}">
-            <div class="neo-card">
-              <h3 class="feature-title">Crop Information</h3>
-              <p>Get end to end information about cultivation of crops</p>
-            </div>
-          </a>
-        </div>
-      </div>
+      <a href="#service" class="btn btn-outline-light">Our Services </a>
     </div>
   </div>
 </header>
+<!-- features -->
 
+<section class="service" id="service">
+  <h1 class="text-center">Our Services</h1>
+  <div class="features" id="features">
+    <a href="{{url_for('crop_recommend')}}">
+      <div class="item-flex">
+        <img
+          class="feature-image"
+          src="../static/my_images/crop-recomended.jpg"
+          alt="crop recommendations"
+        />
+
+        <div class="neo-card">
+          <h3 class="feature-title text-center">Crop Recommendation</h3>
+          <p class="text-center">
+            Get recommendations of suitable crop for your region and climate
+          </p>
+        </div>
+      </div>
+    </a>
+    <a href="{{url_for('diseaseDetectionPage')}}">
+      <div class="item-flex">
+        <img
+          src="../static/my_images/crop-disease.jpg"
+          class="feature-image"
+          alt="disease detection"
+        />
+
+        <div class="neo-card">
+          <h3 class="feature-title text-center">Crop Disease Detection</h3>
+          <p class="text-center">Detect disease the crop is suffering from</p>
+        </div>
+      </div>
+    </a>
+    <a href="{{url_for('cropInformationPage')}}">
+      <div class="item-flex">
+        <img
+          src="../static/my_images/info.jpg"
+          class="feature-image"
+          alt="crop information"
+        />
+
+        <div class="neo-card">
+          <h3 class="feature-title text-center">Crop Information</h3>
+          <p class="text-center">
+            Get end to end information about cultivation of crops
+          </p>
+        </div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<footer class="bg-dark text-center text-white">
+  <!-- grid container -->
+  <div class="container p-4">
+    <!-- section: social media -->
+    <section class="mb-4">
+      <!-- Github -->
+      <a
+        class="btn btn-outline-light btn-floating m-1"
+        href="https://github.com/prajwal-h-v/sampleFlaskApp"
+        target="_blank"
+        role="button"
+        ><i class="fab fa-github"></i
+      ></a>
+    </section>
+
+    <!-- Section: Social media -->
+  </div>
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+    © 2022 Copyright:
+    <p class="text-white">Made by Prajwal HV</p>
+  </div>
+  <!-- Copyright -->
+</footer>
+<!-- Footer -->
 <script>
   window.onload = function () {
     var nav_home = document.getElementById("nav-home");

@@ -2,7 +2,7 @@
 from dis import dis
 import io
 import pickle
-
+from app import crop_db, disease_db
 from PIL import Image
 from flask import jsonify
 from torchvision import transforms
@@ -14,6 +14,7 @@ from smtplib import SMTP
 import requests
 import string 
 import random
+from bson.objectid import ObjectId
 
 from app.utilities.model import ResNet9
 
@@ -143,8 +144,8 @@ def predict_image(img, model=disease_model):
     print(top_p.item(), top_class.item())
     # end
 
-    if top_p.item() > 0.9:
-        print("probability is more than 0.9")
+    if top_p.item() > 0.85:
+        print("probability is more than 0.85")
         prediction = disease_classes[top_class.item()]
         print(prediction)
     else:
@@ -155,3 +156,21 @@ def predict_image(img, model=disease_model):
 
 def addCropData():
     return
+
+def getCrops():
+    cursor = crop_db.find()
+    print(cursor)
+
+    return cursor
+
+def getCropByName(name):
+    cursor = crop_db.find_one({'name':name})
+    return cursor
+
+def getCropByid(id):
+    print('ObjectId(\''+id+'\')')
+    reqDic = {'_id':ObjectId(id)}
+    print(reqDic)
+    cursor = crop_db.find_one(reqDic)
+    print(cursor)
+    return cursor

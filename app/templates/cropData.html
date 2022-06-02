@@ -1,0 +1,39 @@
+{% extends 'base.html'%} {%block body%}
+
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      <h5 class="card-title">{{cropData['name']}}</h5>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Description</h5>
+      <p class="card-text">{{cropData['description']}}</p>
+      <h5 class="card-title">Usage</h5>
+      <p class="card-text">{{cropData['usage']}}</p>
+      <h5 class="card-title">Guidelines</h5>
+      {% set points =cropData['propagation'].split('. ') %}
+      <ul class="pointList">
+        {%for point in points %} {%if point|length > 0 %}
+        <li class="point">{{point+'.'}}</li>
+        {%endif%} {%endfor%}
+      </ul>
+
+      <!-- <p class="card-text">{{cropData['propagation']}}</p> -->
+    </div>
+  </div>
+</div>
+
+<script>
+  window.onload = function () {
+    var nav_home = document.getElementById("nav-home");
+    var nav_disease = document.getElementById("nav-disease");
+    var nav_crop = document.getElementById("nav-crop");
+    var nav_crop_info = document.getElementById("nav-crop-center");
+
+    nav_home.classList.remove("active");
+    nav_disease.classList.remove("active");
+    nav_crop.classList.remove("active");
+    nav_crop_info.classList.add("active");
+  };
+</script>
+{%endblock%}

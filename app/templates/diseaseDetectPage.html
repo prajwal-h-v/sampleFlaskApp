@@ -1,5 +1,8 @@
 {% extends 'base.html'%} {%block body%}
-
+<link
+  rel="stylesheet"
+  href="{{url_for('static', filename='css/featureStyles.css')}}"
+/>
 <div class="container mx-auto">
   <form
     action="{{url_for('diseasePrediction')}}"
@@ -30,8 +33,11 @@
             style="max-width: 256px; max-height: 256px"
           />
         </div>
-
-        <button type="submit" class="btn btn-lg btn-success">Predict</button>
+      </div>
+      <div class="card-footer text-center">
+        <button type="submit" class="btn btn-lg btn-outline-light">
+          Predict
+        </button>
       </div>
     </div>
   </form>

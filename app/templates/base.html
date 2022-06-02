@@ -14,7 +14,18 @@
     />
     <link
       rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- <link
+      rel="stylesheet"
       href="{{url_for('static',filename='css/main.css')}}"
+    /> -->
+    <link
+      rel="stylesheet"
+      href="{{url_for('static',filename='css/base.css')}}"
     />
   </head>
   <body>
@@ -23,7 +34,7 @@
       <a href="{{url_for('home')}}" class="navbar-brand">
         <div class="brand-flex">
           <img
-            src=" {{url_for('static',filename='my_images/hands.png')}} "
+            src=" {{url_for('static',filename='my_images/Logos/logo1.jpg')}} "
             alt="Logo"
             style="width: 80px"
           />
@@ -72,26 +83,5 @@
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"
     ></script>
-
-    <!-- <script>
-      window.onscroll = function () {
-        fixHeader();
-      };
-
-      // Get the header
-      var header = document.getElementById("myHeader");
-
-      // Get the offset position of the navbar
-      var sticky = header.offsetTop;
-
-      // Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
-      function fixHeader() {
-        if (window.pageYOffset > sticky) {
-          header.classList.add("sticky");
-        } else {
-          header.classList.remove("sticky");
-        }
-      }
-    </script> -->
   </body>
 </html>

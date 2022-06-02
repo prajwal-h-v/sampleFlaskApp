@@ -1,8 +1,12 @@
 {% extends 'base.html'%} {%block body%}
 <script src="{{url_for('static',filename='scripts/cities.js')}}"></script>
+<link
+  rel="stylesheet"
+  href="{{url_for('static', filename='css/featureStyles.css')}}"
+/>
 <div class="container mx-auto">
   <form method="POST" action="{{url_for('cropRecommendPrediction')}}">
-    <div class="card">
+    <div class="card" id="crop_rec_card">
       <div class="card-header text-center">
         <h1>Crop Recommendation</h1>
         <p>

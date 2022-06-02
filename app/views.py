@@ -1,18 +1,22 @@
 
 
 
+
+import json
+from bson.json_util import dumps
 from flask import redirect, render_template,request, url_for,session, Markup
 from app.utilities.diseases import disease_dic
-
-from app import api,app,admin, crop_db
+from app import api,app,admin, crop_db, disease_db
 import numpy as np
-from app.models import CropRecommendation, Hello, Square
-from app.utils import cropPrediction, predict_image,weather_fetch, generatePassword,sendMail
+from app.models import CropRecommendation, Hello, Square, DieasePredictorAPI
+from app.utils import cropPrediction, getCrops, predict_image,weather_fetch, generatePassword,sendMail,getCropByName, getCropByid
+
 
 
 api.add_resource(Hello,"/api/")
 api.add_resource(Square,"/api/square/<int:num>")
 api.add_resource(CropRecommendation,'/api/crop-recommend')
+api.add_resource(DieasePredictorAPI, '/api/disease-prediction')
 
 #############################################################
 ###################### Home Page ############################
@@ -30,9 +34,68 @@ def crop_recommend():
     title = "Crop Recommendation"
     return render_template('crop.html',title=title)
 
+#############################################################
+#################### Disease Detection Page #################
+#############################################################
+@app.route('/diseaseDetect')
+def diseaseDetectionPage():
+    title = "Disease Detection"
+    return render_template('diseaseDetectPage.html', title=title)
+    
+#############################################################
+###################### Crop Info Page #######################
+#############################################################
+@app.route('/cropInformation')
+def cropInformationPage():
+    crops = getCrops()
+    # return render_template('cropLists.html', title = "Crop List")
+    cropNames = []
+
+    for r in crops:
+        print(r['_id'])
+        cropNames.append( (str(r['_id']), r['name'] ))
+    # for i in range(1000):
+    #     cropNames.append('test:'+str(i))
+    
+    return render_template('cropLists.html', title='Crop List', crops = cropNames)
+
+
+@app.route('/cropInformation/<name>')
+def getCropInfo(name):
+    info = getCropByName(name)
+    data = json.loads(dumps(info))
+    return data
+
+@app.route('/getCropById/<id>')
+def getCropById(id):
+    info = getCropByid(id)
+    data = json.loads(dumps(info))
+    print(data)
+    return render_template('cropData.html', title=data['name'], cropData = data)
 
 #############################################################
-###################### AAdd Admin Page #####################
+###################### Crop Center Page #####################
+#############################################################
+@app.route('/cropCenterPage')
+def cropCenterPage():
+    if session.get('name'):
+        title = "Add Crop Info"
+        return render_template('addCropData.html',title=title,name=session.get('name'),email = session.get('email'))
+    else:
+        return redirect(url_for('adminLoginPage'))
+
+
+#############################################################
+###################### Try Again ############################
+#############################################################
+@app.route('/try_again')
+def try_again():
+    title="Try Again"
+    return render_template('try_again.html',title=title,home=request.args.get('home'))
+
+
+#############################################################
+###################### Add Admin Page #####################
 #############################################################
 @app.route('/addAdminPage')
 def addAdminPage():
@@ -63,7 +126,7 @@ def adminDashboard():
         return redirect(url_for('adminLoginPage'))
 
 #############################################################
-###################### Adding new Admin #####################
+###################### Admin Logout #########################
 #############################################################
 @app.route('/logout')
 def adminLogout():
@@ -71,40 +134,10 @@ def adminLogout():
     session['email']=None
     return redirect(url_for('adminLoginPage'))
 
-#############################################################
-#################### Disease Detection Page #################
-#############################################################
-@app.route('/diseaseDetect')
-def diseaseDetectionPage():
-    title = "Disease Detection"
-    return render_template('diseaseDetectPage.html', title=title)
-    
-#############################################################
-###################### Crop Info Page #######################
-#############################################################
-@app.route('/cropInformation')
-def cropInformationPage():
-    return redirect(url_for('try_again', home="home"))
 
 #############################################################
-###################### Crop Center Page #####################
+###################### Add Crop Page ########################
 #############################################################
-@app.route('/cropCenterPage')
-def cropCenterPage():
-    if session.get('name'):
-        title = "Add Crop Info"
-        return render_template('addCropData.html',title=title,name=session.get('name'),email = session.get('email'))
-    else:
-        return redirect(url_for('adminLoginPage'))
-
-
-#############################################################
-###################### try Again ############################
-#############################################################
-@app.route('/try_again')
-def try_again():
-    title="Try Again"
-    return render_template('try_again.html',title=title,home=request.args.get('home'))
 
 @app.route('/addCropPage')
 def addCropPage():
@@ -238,8 +271,10 @@ def diseasePrediction():
          
     prediction = predict_image(img)
 
-    prediction = Markup(str(disease_dic[prediction]))
-    return render_template('disease_result.html',prediction=prediction, title = title)
+    prediction1 = Markup(str(disease_dic[prediction]))
+    pred_from_db = disease_db.find_one({'disease_name':prediction})
+    print(pred_from_db)
+    return render_template('disease_result.html',prediction=prediction1, title = title)
   
 
 @app.route('/addNewCrop', methods=['POST'])

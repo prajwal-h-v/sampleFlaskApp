@@ -1,0 +1,121 @@
+:root {
+  --white: #ffffff;
+  --transparent: #00000000;
+  --half-white-green: #ecf8f2;
+  --primary-green: #2d8659;
+  --primary-green-light: #c8ead9;
+  --primary-green-dark: #235c40;
+}
+
+.service {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.service h1 {
+  color: var(--half-white-green);
+}
+
+/* Features */
+.features {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.item-flex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 95%;
+}
+
+.item-flex img {
+  width: 90%;
+}
+
+.feature-image {
+  height: 240px;
+}
+
+a {
+  text-decoration: none;
+  color: var(--half-white-green);
+}
+
+.neo-card {
+  padding-top: 0.5em;
+  position: relative;
+  border-radius: 0.25em;
+  top: -2em;
+  width: 80%;
+  min-height: 100px;
+  background-color: var(--primary-green-dark);
+}
+
+.features a:hover {
+  color: var(--primary-green-light);
+}
+
+@media screen and (max-width: 768px) {
+  .features {
+    flex-direction: column;
+  }
+}
+
+a:hover {
+  color: var(--primary-green-light);
+}
+.cropCard {
+  padding: 0.5em;
+  border: 1px solid var(--half-white-green);
+  color: var(--half-white-green);
+  text-decoration: none;
+  transition: 0.5s;
+}
+.cropCard:hover {
+  background-color: var(--primary-green-dark);
+  color: var(--primary-green-light);
+}
+#cropList {
+  list-style-type: none;
+  margin: 1em;
+}
+#cropListContainer {
+  display: grid;
+  box-sizing: border-box;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-auto-rows: minmax(120px, max-content);
+  gap: 0.5rem;
+  padding: 0.5rem;
+
+  /* flex-direction: row; */
+  /* justify-content: center;
+  align-items: center; */
+}
+
+.grid-item {
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+}
+.card-body {
+  background-color: var(--primary-green-dark);
+}
+.card-body {
+  background-color: var(--primary-green);
+}
+label {
+  color: var(--half-white-green);
+}
+.card-footer {
+  background-color: var(--primary-green-dark);
+}
+.card-header {
+  background-color: var(--primary-green-dark);
+  color: var(--half-white-green);
+}

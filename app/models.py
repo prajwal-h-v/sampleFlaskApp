@@ -1,10 +1,12 @@
 
 
 
+from this import d
 import numpy as np
+from app import disease_db
 from flask import jsonify,request
 from flask_restful import Resource
-from app.utils import cropPrediction,weather_fetch
+from app.utils import cropPrediction,weather_fetch, predict_image
 
 
 
@@ -39,5 +41,20 @@ class CropRecommendation(Resource):
         
         return myPred
 
+
+class DieasePredictorAPI(Resource):
+    def post(self):
+        data = request.files['key']
+        print(data)
+        # print(type(data.read()))
+
+        # req_data = request.files['image'].read()
+        pred = predict_image(data.read())
+        print(pred)
+        diseaseDetails = disease_db.find_one({'disease_name':pred})
+        # print(diseaseDetails)
+        del diseaseDetails['_id']
+        # print(diseaseDetails)
+        return {'message': diseaseDetails}
 
 

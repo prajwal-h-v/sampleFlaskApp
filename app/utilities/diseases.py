@@ -234,7 +234,7 @@ disease_dic = {
         <br/> Cause of disease:
         <br/><br/> 1. Powdery mildew infections favor humid conditions with temperatures around 68-81° F
         <br/> 2. In warm, dry conditions, new spores form and easily spread the disease.
-        <br/> 3. Symptoms of powdery mildew first appear mid to late summer in Minnesota.  The older leaves are more susceptible and powdery mildew will infect them first.
+        <br/> 3. Symptoms of powdery mildew first appear mid to late summer in Minnesota. The older leaves are more susceptible and powdery mildew will infect them first.
         <br/> 4. Wind blows spores produced in leaf spots to infect other leaves.
         <br/> 5. Under favorable conditions, powdery mildew can spread very rapidly, often covering all of the leaves.
         <br/><br/> How to prevent/cure the disease <br/>

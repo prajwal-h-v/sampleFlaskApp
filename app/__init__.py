@@ -31,6 +31,7 @@ client = pymongo.MongoClient(mongo_client_uri)
 db = client.get_database('cropHelp')
 admin = db.admin
 crop_db = db.crop_data
+disease_db = db.diseases
 
 
 

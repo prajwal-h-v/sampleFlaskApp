@@ -1,5 +1,8 @@
 {% extends 'base.html'%} {%block body%}
-
+<link
+  rel="stylesheet"
+  href="{{url_for('static', filename='css/featureStyles.css')}}"
+/>
 <div class="container py-2 mx-auto my-50 h-10">
   <div class="row">
     <div class="col-sm py-2 py-md-3">
@@ -10,4 +13,24 @@
   </div>
 </div>
 
+<script>
+  function preview_image(event) {
+    var reader = new FileReader();
+    reader.onload = function () {
+      var output = document.getElementById("output_image");
+      output.src = reader.result;
+    };
+    reader.readAsDataURL(event.target.files[0]);
+  }
+
+  window.onload = function () {
+    var nav_home = document.getElementById("nav-home");
+    var nav_disease = document.getElementById("nav-disease");
+    var nav_crop = document.getElementById("nav-crop");
+
+    nav_home.classList.remove("active");
+    nav_disease.classList.add("active");
+    nav_crop.classList.remove("active");
+  };
+</script>
 {%endblock%}
