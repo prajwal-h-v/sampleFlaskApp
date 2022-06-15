@@ -18,7 +18,7 @@
 }
 
 body {
-  background: linear-gradient(#00220088, #00220088),
+  background: linear-gradient(#001100dd, #001100dd),
     url("../my_images/wheat-bg.jpg") no-repeat;
   background-size: cover;
 }
@@ -144,6 +144,8 @@ body {
 }
 
 #navBrand {
-  margin-right: 1em;
   margin-left: 0.5em;
+}
+.img-logo-home {
+  width: 50%;
 }

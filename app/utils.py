@@ -159,11 +159,11 @@ def addCropData():
 
 def getCrops():
     cursor = crop_db.find()
-    
     return cursor
 
 def getCropByName(name):
-    cursor = crop_db.find_one({'name':name})
+
+    cursor = crop_db.find({'name':{"$regex": name, "$options":"i"}})
     return cursor
 
 def getCropByid(id):

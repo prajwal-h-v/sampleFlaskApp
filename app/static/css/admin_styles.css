@@ -224,7 +224,7 @@ body {
   background: var(--primary-green-light);
   border-radius: 12px;
   /* background: #235c40; */
-  box-shadow: 8px 8px 16px #183f2c, -8px -8px 16px #2e7954;
+  box-shadow: 8px 8px 16px #183f2c;
   border: var(--primary-green-light) 7px solid;
 
   color: #4d4d4d;

@@ -66,8 +66,9 @@ def cropInformationPage():
 def getCropInfo(name):
     info = getCropByName(name)
     data = json.loads(dumps(info))
-    return data
-
+    print(data[0])
+    return data[0]
+    
 @app.route('/getCropById/<id>')
 def getCropById(id):
     info = getCropByid(id)
