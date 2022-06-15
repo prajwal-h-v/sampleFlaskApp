@@ -107,7 +107,7 @@ def generatePassword():
     for i in range(length):
         password.append(random.choice(characters))
 
-    random,shuffle(password)
+    random.shuffle(password)
     newPassword = "".join(password)
     return newPassword
 

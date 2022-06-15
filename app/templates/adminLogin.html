@@ -1,7 +1,7 @@
 {% extends 'adminBase.html'%} {% block body %}
 <div class="container">
   <div class="main">
-    <h1>Admin Login</h1>
+    <h1 class="title">Admin Login</h1>
     <form action="{{url_for('adminLogin')}}" method="post">
       <div class="form-group">
         <label for="adminUsername">Username</label>
@@ -21,7 +21,7 @@
           name="adminPassword"
         />
       </div>
-      <button class="btn btn-outline-light">Sign in</button>
+      <button class="btn btn-outline-success">Sign in</button>
     </form>
     <h5 id="warning">{{warning}}</h5>
   </div>
