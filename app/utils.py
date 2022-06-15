@@ -159,8 +159,7 @@ def addCropData():
 
 def getCrops():
     cursor = crop_db.find()
-    print(cursor)
-
+    
     return cursor
 
 def getCropByName(name):

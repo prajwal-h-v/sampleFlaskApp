@@ -9,6 +9,7 @@ from flask_session import Session
 import os
 
 
+
 if "MONGODB_URI" in os.environ:
     mongo_client_uri = os.environ.get('MONGODB_URI')
 else:

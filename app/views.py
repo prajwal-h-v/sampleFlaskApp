@@ -8,15 +8,17 @@ from flask import redirect, render_template,request, url_for,session, Markup
 from app.utilities.diseases import disease_dic
 from app import api,app,admin, crop_db, disease_db
 import numpy as np
-from app.models import CropRecommendation, Hello, Square, DieasePredictorAPI
+from app.models import CropDataAPI, CropRecommendation, Hello, Square, DieasePredictorAPI
 from app.utils import cropPrediction, getCrops, predict_image,weather_fetch, generatePassword,sendMail,getCropByName, getCropByid
 
 
 
-api.add_resource(Hello,"/api/")
-api.add_resource(Square,"/api/square/<int:num>")
+# api.add_resource(Hello,"/api/")
+# api.add_resource(Square,"/api/square/<int:num>")
+appName= "Floria"
 api.add_resource(CropRecommendation,'/api/crop-recommend')
 api.add_resource(DieasePredictorAPI, '/api/disease-prediction')
+api.add_resource(CropDataAPI, '/api/all-crops')
 
 #############################################################
 ###################### Home Page ############################
@@ -24,7 +26,7 @@ api.add_resource(DieasePredictorAPI, '/api/disease-prediction')
 @app.route('/')
 def home():
     title= "Home Page"
-    return render_template('index.html',title=title)
+    return render_template('index.html',title=title, appName=appName)
 
 #############################################################
 ################## Crop Recomendation Page ##################
@@ -32,7 +34,7 @@ def home():
 @app.route('/crop-recommend')
 def crop_recommend():
     title = "Crop Recommendation"
-    return render_template('crop.html',title=title)
+    return render_template('crop.html',title=title,appName=appName)
 
 #############################################################
 #################### Disease Detection Page #################
@@ -40,7 +42,7 @@ def crop_recommend():
 @app.route('/diseaseDetect')
 def diseaseDetectionPage():
     title = "Disease Detection"
-    return render_template('diseaseDetectPage.html', title=title)
+    return render_template('diseaseDetectPage.html', title=title,appName=appName)
     
 #############################################################
 ###################### Crop Info Page #######################
@@ -53,11 +55,11 @@ def cropInformationPage():
 
     for r in crops:
         print(r['_id'])
-        cropNames.append( (str(r['_id']), r['name'] ))
+        cropNames.append( (str(r['_id']), r['name'], r['url'] ))
     # for i in range(1000):
     #     cropNames.append('test:'+str(i))
     
-    return render_template('cropLists.html', title='Crop List', crops = cropNames)
+    return render_template('cropLists.html', title='Crop List', crops = cropNames,appName=appName)
 
 
 @app.route('/cropInformation/<name>')
@@ -71,7 +73,7 @@ def getCropById(id):
     info = getCropByid(id)
     data = json.loads(dumps(info))
     print(data)
-    return render_template('cropData.html', title=data['name'], cropData = data)
+    return render_template('cropData.html', title=data['name'], cropData = data,appName=appName)
 
 #############################################################
 ###################### Crop Center Page #####################
@@ -91,7 +93,7 @@ def cropCenterPage():
 @app.route('/try_again')
 def try_again():
     title="Try Again"
-    return render_template('try_again.html',title=title,home=request.args.get('home'))
+    return render_template('try_again.html',title=title,home=request.args.get('home'),appName=appName)
 
 
 #############################################################
@@ -102,7 +104,7 @@ def addAdminPage():
     if session.get('name'):
         print(session.get('name'))
         title = "Add Admin"
-        return render_template('addAdmin.html',title=title,name=session.get('name'),email = session.get('email'))
+        return render_template('addAdmin.html',title=title,name=session.get('name'),email = session.get('email'),appName=appName)
     else:
         return redirect(url_for('adminLoginPage'))
 
@@ -112,7 +114,7 @@ def addAdminPage():
 @app.route('/adminLoginPage')
 def adminLoginPage():
     title = "Admin Login"
-    return render_template('adminLogin.html',title=title)
+    return render_template('adminLogin.html',title=title,appName=appName)
 
 #############################################################
 ###################### Admin Dashboard ######################
@@ -121,7 +123,7 @@ def adminLoginPage():
 def adminDashboard():
     title = "Admin Dashboard"
     if session.get('name'):
-        return render_template('adminDashboard.html',title=title,name=session.get('name'),email = session.get('email'))
+        return render_template('adminDashboard.html',title=title,name=session.get('name'),email = session.get('email'),appName=appName)
     else:
         return redirect(url_for('adminLoginPage'))
 
@@ -144,7 +146,7 @@ def addCropPage():
 
     if session.get('name'):
         title = "Add New Crop Info"
-        return render_template('NewCropPage.html',title=title,name=session.get('name'),email = session.get('email'))
+        return render_template('NewCropPage.html',title=title,name=session.get('name'),email = session.get('email'),appName=appName)
     else:
         return redirect(url_for('adminLoginPage'))
 
@@ -284,12 +286,14 @@ def addNewCrop():
         description = request.form['description']
         usage = request.form['usage']
         propagation = request.form['propagation']
+        url = request.form['url']
 
         queryObject = {
             "name":cropName,
             "description" : description,
             'usage':usage,
-            'propagation':propagation
+            'propagation':propagation,
+            "url":url
 
         }
         # Checking if crop already exists

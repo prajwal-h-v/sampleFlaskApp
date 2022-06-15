@@ -9,18 +9,15 @@
     <a href=" getCropById/{{crop[0]}} " class="crop-card">
       <div class="grid-item">
         <div class="card">
-          <img
-            src="../static/my_images/logos/logo1.jpg"
-            alt=""
-            class="card-img-top"
-          />
+          <img src="{{crop[2]}}" alt="" class="card-img-top" />
           <div class="card-body">
-            <h2 class="card-title">{{crop[1]}}</h5>
+            <h2 class="card-title">{{crop[1]}}</h2>
             <p class="card-text">Get info about {{crop[1]}}</p>
           </div>
         </div>
       </div>
     </a>
+
     {%endfor%}
   </div>
 </div>

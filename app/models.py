@@ -1,12 +1,14 @@
 
 
 
-from this import d
+import json
+
+from bson.json_util import dumps
 import numpy as np
 from app import disease_db
 from flask import jsonify,request
 from flask_restful import Resource
-from app.utils import cropPrediction,weather_fetch, predict_image
+from app.utils import cropPrediction, getCropByid, getCrops,weather_fetch, predict_image
 
 
 
@@ -44,6 +46,7 @@ class CropRecommendation(Resource):
 
 class DieasePredictorAPI(Resource):
     def post(self):
+        print(request.files.get('key'))
         data = request.files['key']
         print(data)
         # print(type(data.read()))
@@ -58,3 +61,9 @@ class DieasePredictorAPI(Resource):
         return {'message': diseaseDetails}
 
 
+class CropDataAPI(Resource):
+    def get(self):
+        crops = getCrops()
+        print(crops)
+        crops_json = json.loads(dumps(crops))
+        return crops_json
