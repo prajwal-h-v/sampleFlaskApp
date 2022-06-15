@@ -130,11 +130,6 @@ label {
   color: var(--half-white-green);
 }
 
-@media (max-width: 768px) {
-  #cropListContainer {
-  }
-}
-
 #crop_rec_card {
   border: none;
 }
